@@ -2,7 +2,7 @@
 
 ; db configuration
 [db]
-uri       = mysql://m2l_user_g2:m2l_pwd@172.17.28.250/M2L_G2
+uri       = mysql://USER:MDP@IPSERVEUR/BD
 migrate   = 1
 pool_size = 1
 
