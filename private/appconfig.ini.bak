@@ -2,8 +2,12 @@
 
 ; db configuration
 [db]
+<<<<<<< HEAD
 uri       = mysql://m2l_user_g4
 	:m2l_pwd@172.17.28.250/M2L_G4
+=======
+uri       = mysql://USER:MDP@IPSERVEUR/BD
+>>>>>>> refs/remotes/origin/master
 migrate   = 1
 pool_size = 1
 
