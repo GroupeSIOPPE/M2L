@@ -40,6 +40,10 @@ def user():
     """
     return dict(form=auth())
 
+def olympique():
+    rowsAthlete=db().select(db.athlete.ALL)
+    return locals()
+
 
 @cache.action()
 def download():
