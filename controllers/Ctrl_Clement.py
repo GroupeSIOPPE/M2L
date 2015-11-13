@@ -32,3 +32,12 @@ def ajoutLigue():
     else:
         response.flash = 'Veuillez remplir le formulaire'
     return dict(form=form)
+
+def supprLigue():
+    rowsLigues=[]
+    for row in db(db.ligue.nom).select(db.ligue.nom, distinct=True):
+        rowsLigues.append(row.nom)
+
+    ligueChoisi=request.vars['nom']
+    db(db.ligue.nom==ligueChoisi).delete()
+    return locals()

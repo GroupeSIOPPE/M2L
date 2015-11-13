@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<h1>Sélectionnez une ligue à supprimer </h1>
+<form action="">
+    <select name="nom">
+        {{for uneLigue in response._vars['rowsLigues']:}}
+        <option>{{=uneLigue}}</option>
+        {{pass}}
+    </select>
+    <input type="submit" value="Valider"/>
+</form>
+
+
+<form action="ligues">
+    <input type="submit" value="Retour"/>
+</form>
