@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+<h1>Liste des ligues </h1>
+<table class='table'>
+    <tr style="background-color:black; color:white;">
+        <td width=200px>Discipline</td>
+        <td width=200px>Nom</td>
+        <td width=200px>Adresse</td>
+        <td width=200px>Code Postal</td>
+        <td width=200px>Ville</td>
+        <td width=200px>Téléphone</td>
+        <td width=200px>E-mail</td>
+        <td width=200px>Site Web</td>
+    </tr>
+    {{for uneLigue in response._vars['rowsLigues']:}}
+    <tr>
+        <td>{{=uneLigue.discipline}}</td>
+        <td>{{=uneLigue.nom}}</td>
+        <td>{{=uneLigue.adresseRue}}</td>
+        <td>{{=uneLigue.cp}}</td>
+        <td>{{=uneLigue.ville}}</td>
+        <td>{{=uneLigue.tel}}</td>
+        <td>{{=uneLigue.emailContact}}</td>
+        <td>{{=uneLigue.URLSiteWeb}}</td>
+    </tr>
+    {{pass}}
+</table>

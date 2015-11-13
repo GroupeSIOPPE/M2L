@@ -24,7 +24,7 @@ response.google_analytics_id = None
 #########################################################################
 
 response.menu = [ (T('Home'), False, URL('default', 'index'), [])]
-response.menu += [ (T('Nos ligues'), False, URL('default', 'index'), [])]
+response.menu += [ (T('Nos ligues'), False, URL('Ctrl_Clement', 'ligues'), [])]
 response.menu += [ (T('Actualités sportives de la presse'), False, URL('Ctrl_Clement', 'actu'), [])]
 response.menu += [ (T('Offre d\'emploi'), False, URL('default', 'index'), [])]
 response.menu += [ (T('Intranet'), False, URL('default', 'index'), [])]

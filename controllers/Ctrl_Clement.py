@@ -18,3 +18,7 @@ def actu():
     import gluon.contrib.feedparser as feedparser
     rssLorrain = aggregator()
     return locals()
+
+def ligues():
+    rowsLigues=db().select(db.ligue.ALL)
+    return locals()
