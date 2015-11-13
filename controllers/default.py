@@ -40,9 +40,7 @@ def user():
     """
     return dict(form=auth())
 
-def olympique():
-    rowsAthlete=db((db.ligue.id==db.athlete.idLigue)&(db.athlete.id==db.dateOlympique.idAthlete)).select(db.athlete.nom,db.athlete.prenom,db.ligue.discipline,db.ligue.nom,db.dateOlympique.dateOlympique)
-    return locals()
+
 
 
 @cache.action()
