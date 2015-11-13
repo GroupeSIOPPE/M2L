@@ -24,3 +24,8 @@
     </tr>
     {{pass}}
 </table>
+{{if auth.has_membership('Administration'):}}
+    <form action="ajoutLigue">
+        <input type="submit" name="ajoutLigue" value="Ajouter une Ligue"/>
+    </form>
+{{pass}}

@@ -22,3 +22,13 @@ def actu():
 def ligues():
     rowsLigues=db().select(db.ligue.ALL)
     return locals()
+
+def ajoutLigue():
+    form = SQLFORM(db.ligue)
+    if form.process().accepted:
+        response.flash = 'Ligue ajouté'
+    elif form.errors:
+        response.flash = 'Problème dans le formulaire'
+    else:
+        response.flash = 'Veuillez remplir le formulaire'
+    return dict(form=form)
