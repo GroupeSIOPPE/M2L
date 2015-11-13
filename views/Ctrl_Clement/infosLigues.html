@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+{{for uneLigue in Ligue:}}
+<h1>{{=uneLigue.discipline}}</h1>
+<h2>{{=uneLigue.nom}}</h2>
+
+<table class='table' border=1>
+    <tr>
+        <td width=600px>
+            <h3><a href="http://{{=uneLigue.URLSiteWeb}}" target="_blank">{{=uneLigue.URLSiteWeb}}</a></h3>
+            <i>Contact e-mail : {{=uneLigue.emailContact}}</i></br>
+            <i>Contact téléphone : {{=uneLigue.tel}} </i></br>
+            Adresse : {{=uneLigue.adresseRue}}</br>
+            Code Postal : {{=uneLigue.cp}}</br>
+            Ville : {{=uneLigue.ville}}</br>
+        </td>
+        <td>
+            <h3>Athlètes olympiques :</h3></br>
+            {{for unAthlete in Athlete:}}
+                {{=unAthlete.nom}}
+                {{=unAthlete.prenom}}</br>
+            {{pass}}
+        </td>
+    </tr>
+
+</table>
+
+
+{{pass}}
