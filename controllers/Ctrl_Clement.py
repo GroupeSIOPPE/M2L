@@ -22,3 +22,22 @@ def actu():
 def ligues():
     rowsLigues=db().select(db.ligue.ALL)
     return locals()
+
+def ajoutLigue():
+    form = SQLFORM(db.ligue)
+    if form.process().accepted:
+        response.flash = 'Ligue ajouté'
+    elif form.errors:
+        response.flash = 'Problème dans le formulaire'
+    else:
+        response.flash = 'Veuillez remplir le formulaire'
+    return dict(form=form)
+
+def supprLigue():
+    rowsLigues=[]
+    for row in db(db.ligue.nom).select(db.ligue.nom, distinct=True):
+        rowsLigues.append(row.nom)
+
+    ligueChoisi=request.vars['nom']
+    db(db.ligue.nom==ligueChoisi).delete()
+    return locals()
