@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+<h1>Adhérent de la maison des ligues ayant participé aux jeux olympiques</h1>
+<table border=2 class='table'>
+
+<tr style="background-color:black; color:white;">
+    <td width=200px> Nom </td>
+    <td width=200px> Prenom </td>
+    <td width=200px> Discipline</td>
+    <td width=200px> Ligue </td>
+    <td width=200px> Année </td>
+</tr>
+
+    {{for unAthlete in response._vars['rowsAthlete']:}}
+    <tr>
+        <td>{{=unAthlete.athlete.nom}} </td>
+        <td>{{=unAthlete.athlete.prenom}}</td>
+        <td>{{=unAthlete.ligue.discipline}}</td>
+        <td>{{=unAthlete.ligue.nom}}</td>
+        <td>{{for uneDate in response._vars['rowsDateOlympique']:}}
+                {{if unAthlete.athlete.nom==uneDate.athlete.nom:}}
+                    {{=uneDate.dateOlympique.dateOlympique}}/
+                {{pass}}
+            {{pass}}</td>
+
+    </tr>
+    {{pass}}
+</table>
+
+{{if auth.has_membership('Administration'):}}
+    <FORM action='adminOlympique'>
+        <INPUT type='submit' value='Ajouter un Athlète'>
+    </FORM>
+    <FORM action='ajouterDateOlympique'>
+        <INPUT type='submit' value='Ajouter une Date'>
+    </FORM> 
+{{pass}}        
+</FORM>
