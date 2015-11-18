@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+<h1>Liste des ligues </h1>
+<table class='table' border=1 width=50%>
+    <tr style="background-color:black; color:white;">
+        <td width=35%>Nom</td>
+        <td width=35%>Discipline</td>
+        <td width=30%>Nombre de licenciés</td>
+
+    </tr>
+    {{NbLicencies=response._vars['NbLicencies']}}
+    {{i=-1}}
+    {{for uneLigue in response._vars['rowsLigues']:}}
+    <tr>
+        <td><a href="infosLigues?ligue={{=uneLigue.id}}">{{=uneLigue.nom}}</a></td>
+        {{i=i+1}}
+        <td>{{=uneLigue.discipline}}</td>
+        <td>{{=NbLicencies[i]}}</td>
+    </tr>
+    {{pass}}
+</table>
+{{if auth.has_membership('Administration'):}}
+    <form action="ajoutLigue">
+        <input type="submit" name="ajoutLigue" value="Ajouter une Ligue"/>
+    </form>
+    <form action="supprLigue">
+        <input type="submit" name="supprLigue" value="Supprimer une Ligue"/>
+    </form>
+{{pass}}

@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<html>
+    <table class="table">
+        {{for entry in rssLorrain['entries']:}}
+        <tr><td><a target="_blank" href="{{=entry['link']}}">{{=entry['title']}}</a></td></tr>
+        {{pass}}
+    </table>
+</html>
