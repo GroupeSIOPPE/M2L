@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>
+    Services proposés par la maison des ligues de Loraines
+</h1>
+
+{{for unService in response._vars['rowLesServices']:}}
+    <h3>{{=unService.libelle}}</h3>
+    <p>{{=unService.description}}</p>
+{{pass}}
+{{=A(T("Administration"), _href=URL('informationM2L','servicesModif'))}}

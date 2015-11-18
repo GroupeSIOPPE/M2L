@@ -298,3 +298,18 @@ CREATE TABLE auth_user(
     registration_id VARCHAR(512),
     PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-11-18T15:11:40.051000
+CREATE TABLE inscriptionFormation(
+    id INT AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-11-18T15:11:40.808000
+CREATE TABLE inscriptionFormation(
+    id INT AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2015-11-18T15:12:40.054000
+CREATE TABLE inscriptionFormation(
+    id INT AUTO_INCREMENT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
