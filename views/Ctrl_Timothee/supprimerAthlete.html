@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <h1>Sélectionnez un Athlète à supprimer </h1>
-<form action="olympique">
+<form action="">
     <select name="nom">
         {{for unAthlete in response._vars['rowsAthlete']:}}
         <option>{{=unAthlete}}</option>
