@@ -21,6 +21,10 @@ def actu():
 
 def ligues():
     rowsLigues=db().select(db.ligue.ALL)
+    NbLicencies=[]
+    for uneLigue in rowsLigues:
+        NbLicencies.append(db(uneLigue.id==db.athlete.idLigue).count())
+
     return locals()
 
 def ajoutLigue():
