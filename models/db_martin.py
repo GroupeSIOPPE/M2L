@@ -18,4 +18,3 @@ db.define_table('formation',
           Field('description','string',requires=IS_NOT_EMPTY()),
           Field('nbrPlaces','integer',requires=IS_NOT_EMPTY()),
           migrate=False)
-db.define_table('inscriptionFormation')

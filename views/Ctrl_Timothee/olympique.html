@@ -25,10 +25,14 @@
     </tr>
     {{pass}}
 </table>
+<form action="rechercherAthlete">
+    <input class="champ" type="text" value="Nom de l'athlète"/>
+    <input type="submit" value="Rechercher " />
+</form>
 
 {{if auth.has_membership('Administration'):}}
    
-
+<br>
     <FORM action='adminOlympique' style="float:left">
         <INPUT type='submit' value='Ajouter un Athlète'/>
     </FORM>
