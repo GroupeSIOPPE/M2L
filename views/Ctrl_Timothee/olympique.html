@@ -27,11 +27,20 @@
 </table>
 
 {{if auth.has_membership('Administration'):}}
-    <FORM action='adminOlympique'>
-        <INPUT type='submit' value='Ajouter un Athlète'>
+   
+
+    <FORM action='adminOlympique' style="float:left">
+        <INPUT type='submit' value='Ajouter un Athlète'/>
     </FORM>
-    <FORM action='ajouterDateOlympique'>
-        <INPUT type='submit' value='Ajouter une Date'>
-    </FORM> 
+    <FORM action='supprimerAthlete'style="float:left">
+        <INPUT type='submit' value='Supprimer un Athlète'/>
+    </FORM>
+    <FORM action='ajouterDateOlympique'style="float:left">
+        <INPUT type='submit' value='Ajouter une Date'/>
+    </FORM>
+    <FORM action='supprimerDateOlympique'style="float:left">
+        <INPUT type='submit' value='Supprimer une Date'/>
+    </FORM>
+    
 {{pass}}        
 </FORM>
