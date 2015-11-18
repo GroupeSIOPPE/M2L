@@ -1,0 +1,31 @@
+{{extend 'layout.html'}}
+<h1>Administration</h1>
+{{if auth.has_membership('Administration'):}}
+<table border=1>
+    <tr>
+        <td><b>Nom</b></td>
+        <td><b>Adresse</b></td>
+        <td><b>Remarques</b></td>
+        <td><b>Site internet</b></td>
+        <td><b>Date de début</b></td>
+        <td><b>Date de fin</b></td>
+        <td><b>Ligue organisatrice</b></td>
+        <td><b>Supprimer</b></td>
+    </tr>
+    {{for unEvenement in response._vars['evenements']:}}
+    <tr>
+        <td>{{=unEvenement.evenement.nom}}</td>
+        <td>{{=unEvenement.evenement.adresse}}</td>
+        <td>{{=unEvenement.evenement.remarques}}</td>
+        <td>{{=unEvenement.evenement.site}}</td>
+        <td>{{=unEvenement.evenement.dateDebut}}</td>
+        <td>{{=unEvenement.evenement.dateFin}}</td>
+        <td>{{=unEvenement.ligue.nom}}</td>
+        <td> {{=supp}} </td>
+    </tr>
+    {{pass}}
+</table>
+<br><br>
+<b>Ajouter un évènement :</b><br><br>
+{{=form}}
+{{pass}}

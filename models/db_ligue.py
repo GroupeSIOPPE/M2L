@@ -8,3 +8,14 @@ db.define_table('ligue',
              Field('URLSiteWeb','string'),
              Field('emailContact','string')  
              ,migrate=False)
+
+
+db.define_table('evenement',
+             Field('nom','string',requires=IS_NOT_EMPTY()),
+             Field('adresse','string',requires=IS_NOT_EMPTY()),
+             Field('remarques','string',requires=IS_NOT_EMPTY()),
+             Field('site','string',requires=IS_NOT_EMPTY()),
+             Field('dateDebut','date'),
+             Field('dateFin','date'),
+             Field('idLigue','reference ligue',requires=IS_IN_DB(db,db.ligue.id,'%(nom)s'))
+             ,migrate=False)
