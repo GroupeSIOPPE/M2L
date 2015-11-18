@@ -20,40 +20,7 @@ def evenement():
     return locals()
 
 def evtadmin():
-    evenements=db(db.ligue.id==db.evenement.idLigue).select(db.evenement.nom, db.evenement.adresse, db.evenement.remarques, db.evenement.site, db.evenement.dateDebut, db.evenement.dateFin, db.ligue.nom,  orderby=db.evenement.dateDebut)
-
-    listeLigue=[]
-
-    for row in db().select(db.ligue.nom, orderby=db.ligue.nom):
-        listeLigue.append(row.nom)
-
-    form=SQLFORM.factory(
-            Field('nom','text',requires=IS_NOT_EMPTY()),
-            Field('adresse','text',requires=IS_NOT_EMPTY()),
-            Field('remarques','text',requires=IS_NOT_EMPTY()),
-            Field('site','text',requires=IS_NOT_EMPTY()),
-            Field('dateDebut','date',requires=IS_NOT_EMPTY()),
-            Field('dateFin','date',requires=IS_NOT_EMPTY()),
-            Field('idLigue','text',requires=IS_IN_SET(listeLigue))).process()
-
-    if form.accepted:
-        rows=db(db.ligue.nom==request.vars.idLigue).select(db.ligue.id)
-        for row in rows:
-            idLigue=row.id
-            db.evenement.update_or_insert(nom=request.vars.nom,
-                                          adresse=request.vars.adresse,
-                                          remarques=request.vars.remarques,
-                                          site=request.vars.site,
-                                          dateDebut=request.vars.dateDebut,
-                                          dateFin=request.vars.dateFin,
-                                          idLigue=idLigue
-                                          )
-        redirect(URL('evtadmin'))
-
-    supp=SQLFORM.factory(
-        suppression=db(db.evenement.nom==unEvenement.evenement.nom).delete())
-
-
+    form = SQLFORM.smartgrid(db.evenement,linked_tables=['Ligue'])
     return locals()
 
 def statutJuridique():
