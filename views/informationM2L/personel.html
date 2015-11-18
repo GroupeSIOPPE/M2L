@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<h1>
+    Personel de la maison des ligues
+</h1>
+<table class="table">
+    <tr><td>Nom</td><td>Prénom</td><td>Adresse</td><td>Telephone</td></tr>
+    {{for unePersone in response._vars['rowPersonel']:}}
+        <tr><td>{{=unePersone.nom}}</td>
+            <td>{{=unePersone.prenom}}</td>
+            <td>{{=unePersone.adresse}}</td>
+            <td>{{=unePersone.tel}}</td></tr>
+    {{pass}}
+</table>
+{{=A(T("Administration"), _href=URL('informationM2L','personelModif'))}}

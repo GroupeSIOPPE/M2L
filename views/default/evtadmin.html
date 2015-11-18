@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+<h1>Administration</h1>
+{{if auth.has_membership('Administration'):}}
+{{=form}}
+{{pass}}
