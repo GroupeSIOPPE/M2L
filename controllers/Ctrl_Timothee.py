@@ -16,6 +16,7 @@ def ajouterDateOlympique():
         idAthlete=idAthlete[0]
         db.dateOlympique.update_or_insert(dateOlympique=request.vars.Date,
                                           idAthlete=idAthlete)
+        redirect(URL('olympique'))
     return locals()
 def adminOlympique():
     listeLigue=[]
@@ -38,4 +39,5 @@ def adminOlympique():
         db.dateOlympique.update_or_insert(dateOlympique=request.vars.Date,
                                           idAthlete=idA
                                          )
+        redirect(URL('olympique'))
     return locals()
