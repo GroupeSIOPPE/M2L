@@ -55,10 +55,13 @@ def supprimerDateOlympique():
     rowsAthlete=[]
     for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
         rowsAthlete.append(row.nom)
+        AthleteChoisi=request.vars['nom']
     return locals()
 
 def supprimerDateAthlete():
-    rowsDate=[]
-    for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
-        rowsAthlete.append(row.nom)
+    athleteChoisis=request.vars['nom']
+    idAthlete=db(db.athlete.nom==athleteChoisis).select(db.athlete.id)
+    rowsDate=db(db.dateOlympique.idAthlete==idAthlete[0]).select(db.dateOlympique.dateOlympique,db.dateOlympique.id)
+    dateChoisis=request.vars.dates
+    db(db.dateOlympique.id==dateChoisis).delete()
     return locals()
