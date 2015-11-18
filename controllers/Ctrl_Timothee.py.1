@@ -49,16 +49,9 @@ def supprimerAthlete():
 
     AthleteChoisi=request.vars['nom']
     db(db.athlete.nom==AthleteChoisi).delete()
+    redirect(URL('olympique'))
     return locals()
 
 def supprimerDateOlympique():
-    rowsAthlete=[]
-    for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
-        rowsAthlete.append(row.nom)
-    return locals()
-
-def supprimerDateAthlete():
-    rowsDate=[]
-    for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
-        rowsAthlete.append(row.nom)
+    
     return locals()

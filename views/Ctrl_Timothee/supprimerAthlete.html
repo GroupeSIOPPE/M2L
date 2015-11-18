@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<h1>Sélectionnez un Athlète à supprimer </h1>
+<form action="olympique">
+    <select name="nom">
+        {{for unAthlete in response._vars['rowsAthlete']:}}
+        <option>{{=unAthlete}}</option>
+        {{pass}}
+    </select>
+    <input type="submit" value="Valider"/>
+</form>
+
+
+<form action="olympique">
+    <input type="submit" value="Retour"/>
+</form>
