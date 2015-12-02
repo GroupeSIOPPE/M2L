@@ -19,6 +19,9 @@ def evenement():
     evenements=db(db.ligue.id==db.evenement.idLigue).select(db.evenement.nom, db.evenement.adresse, db.evenement.remarques, db.evenement.site, db.evenement.dateDebut, db.evenement.dateFin, db.ligue.nom,  orderby=db.evenement.dateDebut)
     return locals()
 
+def formationsJBFD():
+    return locals()
+
 def evtadmin():
     form = SQLFORM.smartgrid(db.evenement,linked_tables=['Ligue'])
     return locals()

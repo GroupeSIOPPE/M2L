@@ -25,6 +25,7 @@ response.google_analytics_id = None
 
 response.menu = [ (T('Home'), False, URL('default', 'index'), [])]
 response.menu += [ (T('Evenements'), False, URL('default', 'evenement'), [])]
+response.menu += [ (T('Formations JBFD'), False, URL('default', 'formationsJBFD'), [])]
 response.menu += [ (T('Nos ligues'), False, URL('Ctrl_Clement', 'ligues'), [])]
 response.menu += [ (T('Actualités sportives de la presse'), False, URL('Ctrl_Clement', 'actu'), [])]
 response.menu += [ (T('Lorrains aux JO'), False, URL('Ctrl_Timothee', 'olympique'), [])]
