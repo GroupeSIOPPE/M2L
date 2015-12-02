@@ -50,3 +50,6 @@ def infosLigues():
     Ligue=db(db.ligue.id==request.vars['ligue']).select(db.ligue.ALL)
     Athlete=db(db.athlete.idLigue==request.vars['ligue']).select(db.athlete.ALL)
     return locals()
+
+def demandesFormations():
+    return locals()

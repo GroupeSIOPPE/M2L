@@ -25,12 +25,15 @@ response.google_analytics_id = None
 
 response.menu = [ (T('Home'), False, URL('default', 'index'), [])]
 response.menu += [ (T('Evenements'), False, URL('default', 'evenement'), [])]
+response.menu += [ (T('Formations JBFD'), False, URL('default', 'formationsJBFD'), [])]
 response.menu += [ (T('Nos ligues'), False, URL('Ctrl_Clement', 'ligues'), [])]
 response.menu += [ (T('Actualités sportives de la presse'), False, URL('Ctrl_Clement', 'actu'), [])]
 response.menu += [ (T('Lorrains aux JO'), False, URL('Ctrl_Timothee', 'olympique'), [])]
 response.menu += [ (T('Offre d\'emploi'), False, URL('default', 'index'), [])]
 response.menu += [ (T('Intranet'), False, URL('default', 'index'), [])]
 
+if auth.has_membership('Administration') or auth.has_membership('ResponsableLigue') or auth.has_membership('EmployéCROSL')  :
+    response.menu += [ (T('Voir les demandes de formations'), False, URL('Ctrl_Clement', 'demandesFormations'), [])]
 
 DEVELOPMENT_MENU = False
 
