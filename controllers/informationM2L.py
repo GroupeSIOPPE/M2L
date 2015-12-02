@@ -35,3 +35,8 @@ def listeFormation():
 def formationModif():
     grid = SQLFORM.grid(db.formation)
     return locals()
+
+@auth.requires_login()
+def inscriptionFormation(idUser,idFormation):
+    db.inscriptionFormation.insert(idUser,idFormation)
+    return locals()
