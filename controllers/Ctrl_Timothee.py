@@ -74,4 +74,6 @@ def supprimerDateChoisis():
 
 def rechercherAthlete():
     nomChoisi=request.vars.search
+    rowsAthlete=db((db.ligue.id==db.athlete.idLigue)&(nomChoisi==db.athlete.nom)).select(db.athlete.nom,db.athlete.prenom,db.ligue.discipline,db.ligue.nom)
+    rowsDateOlympique=db(db.athlete.id==db.dateOlympique.idAthlete).select(db.athlete.nom,db.dateOlympique.dateOlympique)
     return locals()
