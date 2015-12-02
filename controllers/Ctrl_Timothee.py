@@ -47,10 +47,13 @@ def supprimerAthlete():
     for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
         rowsAthlete.append(row.nom)
 
-    AthleteChoisi=request.vars['nom']
-    db(db.athlete.nom==AthleteChoisi).delete()
     return locals()
 
+def supprimerAthleteChoisis():
+    AthleteChoisi=request.vars['nom']
+    db(db.athlete.nom==AthleteChoisi).delete()
+    redirect(URL('olympique'))
+    
 def supprimerDateOlympique():
     rowsAthlete=[]
     for row in db(db.athlete.nom).select(db.athlete.nom, distinct=True):
@@ -62,6 +65,15 @@ def supprimerDateAthlete():
     athleteChoisis=request.vars['nom']
     idAthlete=db(db.athlete.nom==athleteChoisis).select(db.athlete.id)
     rowsDate=db(db.dateOlympique.idAthlete==idAthlete[0]).select(db.dateOlympique.dateOlympique,db.dateOlympique.id)
+    return locals()
+
+def supprimerDateChoisis():
     dateChoisis=request.vars.dates
     db(db.dateOlympique.id==dateChoisis).delete()
+    redirect(URL('olympique'))
+
+def rechercherAthlete():
+    nomChoisi=request.vars.search
+    rowsAthlete=db((db.ligue.id==db.athlete.idLigue)&(nomChoisi==db.athlete.nom)).select(db.athlete.nom,db.athlete.prenom,db.ligue.discipline,db.ligue.nom)
+    rowsDateOlympique=db(db.athlete.id==db.dateOlympique.idAthlete).select(db.athlete.nom,db.dateOlympique.dateOlympique)
     return locals()

@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 <h1>Date(s) Attribuée(s) à l'athlète {{=athleteChoisis}}</h1>
-<form action='olympique'>
+<form action="{{=URL('Ctrl_Timothee','supprimerDateChoisis')}}">
     <select name="dates">
         {{for uneDate in response._vars['rowsDate']:}}
             <option value='{{=uneDate.id}}'> {{=uneDate.dateOlympique}}</option>

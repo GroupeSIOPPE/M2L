@@ -25,26 +25,6 @@
     </tr>
     {{pass}}
 </table>
-<form action="rechercherAthlete">
-    <input class="champ" type="text" name="search"/>
-    <input type="submit" value="Rechercher " />
+<form action="olympique">
+    <input type="submit" value="Retour"/>
 </form>
-
-{{if auth.has_membership('Administration'):}}
-   
-<br>
-    <FORM action='adminOlympique' style="float:left">
-        <INPUT type='submit' value='Ajouter un Athlète'/>
-    </FORM>
-    <FORM action='supprimerAthlete'style="float:left">
-        <INPUT type='submit' value='Supprimer un Athlète'/>
-    </FORM>
-    <FORM action='ajouterDateOlympique'style="float:left">
-        <INPUT type='submit' value='Ajouter une Date'/>
-    </FORM>
-    <FORM action='supprimerDateOlympique'style="float:left">
-        <INPUT type='submit' value='Supprimer une Date'/>
-    </FORM>
-    
-{{pass}}        
-</FORM>

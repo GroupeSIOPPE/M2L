@@ -31,3 +31,28 @@ db.define_table('dateOlympique',
                 Field('dateOlympique','date',requires=IS_NOT_EMPTY()),
                 Field('idAthlete','reference athlete',requires=IS_IN_DB(db,db.athlete.id,'%(nom)s')),
                 migrate=False)
+
+db.define_table('formationJBFD',
+                Field('theme','string',requires=IS_NOT_EMPTY()),
+                Field('lieu','string'),
+                Field('dateDebut','date'),
+                Field('dateFin','date'),
+                Field('heureDebut','int'),
+                Field('heureFin','int'),
+                Field('intervenant','string'),
+                Field('contenu','string'),
+                migrate=False)
+
+db.define_table('JBFD',
+                Field('promotion','string'),
+                migrate=False)
+
+db.define_table('contenir',
+                Field('idJBFD','reference JBFD',requires=IS_IN_DB(db,db.athlete.id,'%(promotion)s')),
+                Field('idFormationJBFD','reference formationJBFD',requires=IS_IN_DB(db,db.athlete.id,'%(theme)s')),
+                migrate=False)
+
+db.define_table('inscriptionJBFD',
+                Field('idPersonnel','reference personel',requires=IS_IN_DB(db,db.athlete.id,'%(nom)s')),
+                Field('idJBFD','reference JBFD',requires=IS_IN_DB(db,db.athlete.id,'%(promotion)s')),
+                migrate=False)
