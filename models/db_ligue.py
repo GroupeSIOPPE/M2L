@@ -37,8 +37,8 @@ db.define_table('formationJBFD',
                 Field('lieu','string'),
                 Field('dateDebut','date'),
                 Field('dateFin','date'),
-                Field('heureDebut','int'),
-                Field('heureFin','int'),
+                Field('heureDebut','integer'),
+                Field('heureFin','integer'),
                 Field('intervenant','string'),
                 Field('contenu','string'),
                 migrate=False)
@@ -55,4 +55,32 @@ db.define_table('contenir',
 db.define_table('inscriptionJBFD',
                 Field('idPersonnel','reference personel',requires=IS_IN_DB(db,db.athlete.id,'%(nom)s')),
                 Field('idJBFD','reference JBFD',requires=IS_IN_DB(db,db.athlete.id,'%(promotion)s')),
+                migrate=False)
+
+db.define_table('formation',
+                Field('libelle','string'),
+                Field('lieu','string'),
+                Field('intervenant','string'),
+                Field('audience','string'),
+                Field('objectif','string'),
+                Field('prerequis','string'),
+                Field('contenus','string'),
+                Field('cout','integer'),
+                Field('repas','string'),
+                Field('dateLimite','date'),
+                Field('dateDebut','date'),
+                Field('dateFin','date'),
+                Field('heureDebut','integer'),
+                Field('heureFin','integer'),
+                migrate=False)
+
+db.define_table('participer',
+                Field('idPersonnel','reference personel',requires=IS_IN_DB(db,db.athlete.id,'%(nom)s')),
+                Field('idFormation','reference formation',requires=IS_IN_DB(db,db.athlete.id,'%(libelle)s')),
+                migrate=False)
+
+db.define_table('inscriptionCROSL',
+                Field('idPersonnel','reference personel',requires=IS_IN_DB(db,db.athlete.id,'%(nom)s')),
+                Field('idFormation','reference formation',requires=IS_IN_DB(db,db.athlete.id,'%(libelle)s')),
+                Field('dateInscription','date'),
                 migrate=False)
