@@ -31,6 +31,8 @@ response.menu += [ (T('Lorrains aux JO'), False, URL('Ctrl_Timothee', 'olympique
 response.menu += [ (T('Offre d\'emploi'), False, URL('default', 'index'), [])]
 response.menu += [ (T('Intranet'), False, URL('default', 'index'), [])]
 
+if auth.has_membership('Administration') or auth.has_membership('ResponsableLigue') or auth.has_membership('EmployéCROSL')  :
+    response.menu += [ (T('Voir les demandes de formations'), False, URL('Ctrl_Clement', 'demandesFormations'), [])]
 
 DEVELOPMENT_MENU = False
 
