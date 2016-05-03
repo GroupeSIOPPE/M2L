@@ -1,0 +1,15 @@
+{{rowsLigues = response._vars['rowsLigues']}}
+{{ligues = TAG.ligues(*[TAG.table(*[TAG.column(ligue[f], _name=f) for f in db.ligue.fields], _name="ligue") for ligue in rowsLigues]).xml()}}
+{{=ligues}}
+{{rowsClubs = response._vars['rowsClubs']}}
+{{clubs = TAG.clubs(*[TAG.table(*[TAG.column(club[f], _name=f) for f in db.club.fields], _name="club") for club in rowsClubs]).xml()}}
+{{=clubs}}
+{{rowsEquipes = response._vars['rowsEquipes']}}
+{{equipes = TAG.equipes(*[TAG.table(*[TAG.column(equipe[f], _name=f) for f in db.equipe.fields], _name="equipe") for equipe in rowsEquipes]).xml()}}
+{{=equipes}}
+{{rowsCategories = response._vars['rowsCategories']}}
+{{categories= TAG.categories(*[TAG.table(*[TAG.column(categorie[f], _name=f) for f in db.categorie.fields], _name="categorie") for categorie in rowsCategories]).xml()}}
+{{=categories}}
+{rowsLicencies = response._vars['rowsLicencies']}}
+{{licencies= TAG.licencies(*[TAG.table(*[TAG.column(licencie[f], _name=f) for f in db.licencie.fields], _name="licencie") for licencie in rowsLicencies]).xml()}}
+{{=licencies}}

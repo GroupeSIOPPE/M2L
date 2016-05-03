@@ -52,4 +52,14 @@ def infosLigues():
     return locals()
 
 def demandesFormations():
+    rowInscriPerso=db((db.personel.id==db.inscriptionCROSL.idPersonnel)&(db.formation.id==db.inscriptionCROSL.idFormation)).select(db.personel.nom, db.personel.prenom, db.formation.libelle)
+
+    return locals()
+
+def export_xml():
+    rowsLigues=db().select(db.ligue.ALL)
+    rowsClubs=db().select(db.club.ALL)
+    rowsEquipes=db().select(db.equipe.ALL)
+    rowsCategories=db().select(db.categorie.ALL)
+    rowsLicencies=db().select(db.licencie.ALL)
     return locals()

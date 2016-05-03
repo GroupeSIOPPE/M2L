@@ -6,10 +6,31 @@ db.define_table('ligue',
              Field('cp','string',requires=IS_NOT_EMPTY()),
              Field('tel','string',requires=IS_NOT_EMPTY()),
              Field('URLSiteWeb','string'),
-             Field('emailContact','string'), 
+             Field('emailContact','string'),
              Field('discipline','string')
              ,migrate=False)
 
+db.define_table('club',
+               Field('idLigue','reference ligue',requires=IS_IN_DB(db,db.ligue.id,'%(nom)s')),
+               Field('libelle','string'),
+               migrate=False)
+
+db.define_table('equipe',
+               Field('idClub','reference club',requires=IS_IN_DB(db,db.club.id,'%(libelle)s')),
+               Field('libelle','string'),
+               migrate=False)
+
+db.define_table('categorie',
+               Field('libelle','string'), migrate=False)
+
+db.define_table('licencie',
+               Field('nom','string'),
+               Field('prenom','string'),
+               Field('nomUtilisateur','string'),
+               Field('mdp','string'),
+               Field('idEquipe','reference equipe',requires=IS_IN_DB(db,db.equipe.id,'%(libelle)s')),
+               Field('idCategorie','reference categorie',requires=IS_IN_DB(db,db.categorie.id,'%(libelle)s')),
+               migrate=False)
 
 db.define_table('evenement',
              Field('nom','string',requires=IS_NOT_EMPTY()),
@@ -26,6 +47,7 @@ db.define_table('athlete',
                 Field('prenom','string',requires=IS_NOT_EMPTY()),
                 Field('idLigue','reference ligue',requires=IS_IN_DB(db,db.ligue.id,'%(discipline)s')),
                 migrate=False)
+
 
 db.define_table('dateOlympique',
                 Field('dateOlympique','date',requires=IS_NOT_EMPTY()),
