@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import xml.etree.ElementTree as ET
 def aggregator():
     import gluon.contrib.feedparser as feedparser
     d = feedparser.parse(
@@ -63,3 +63,44 @@ def export_xml():
     rowsCategories=db().select(db.categorie.ALL)
     rowsLicencies=db().select(db.licencie.ALL)
     return locals()
+
+def xml_writer():
+    rows=[]
+    rowsLigues=db().select(db.ligue.ALL)
+    rows.append(rowsLigues)
+    rowsClubs=db().select(db.club.ALL)
+    rows.append(rowsClubs)
+    rowsEquipes=db().select(db.equipe.ALL)
+    rows.append(rowsEquipes)
+    rowsCategories=db().select(db.categorie.ALL)
+    rows.append(rowsCategories)
+    rowsLicencies=db().select(db.licencie.ALL)
+    rows.append(rowsLicencies)
+
+    root= ET.Element("root")
+    for row in rows :
+        nomTable=unicode(str(row), 'utf-8')
+        nomTable=nomTable[0:4]
+        if nomTable=="ligu":
+            fields=db.ligue.fields
+        if nomTable=="club":
+            fields=db.club.fields
+        if nomTable=="equi":
+            fields=db.equipe.fields
+        if nomTable=="lice":
+            fields=db.licencie.fields
+        if nomTable=="cate":
+            fields=db.categorie.fields
+        for element in row:
+            table= ET.SubElement(root, "table", name=nomTable)
+            for f in fields:
+                valeur=unicode(str(element[f]), 'utf-8')
+                ET.SubElement(table, "column", name=f).text=valeur
+    tree=ET.ElementTree(root)
+    tree.write("applications/M2L/static/bdd.xml")
+
+
+def get_xml():
+    xml_writer()
+    url = URL('static','bdd.xml')
+    redirect(url)
